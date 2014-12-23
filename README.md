@@ -42,4 +42,22 @@ When you are ready, enter:
 
 scons mode=release
 
-This will build the default example application. Other examples might be available, refer to applications directory.
+This will build the default example application.
+
+
+Examples (scons <example_name> will build the example in question):
+
+/////////////// spiritizExample1 //////////////////
+
+Usage: spiritizExample1 spiritzExample1.input 
+
+This example needs a file having lines of this kind:
+
+12*3-4*1
+2 +3-4*3
+2+3*4*3
+
+Then it put all computed results in a vector<double>
+
+
+
