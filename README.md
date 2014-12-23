@@ -1,4 +1,4 @@
-/////////////////////////// INTRODUCTION ///////////////////////////////////////
+# INTRODUCTION
 
 * spiritiz is a base of boost::spirit examples
 
@@ -6,7 +6,7 @@
 
 * LICENSE: LGPLv3
 
-////////////////////////////////////////////////////////////////////////////////
+# Compilation
 
 To compile, you will need boost and scons:
 
@@ -45,17 +45,19 @@ scons mode=release
 This will build the default example application.
 
 
-Examples (scons <example_name> will build the example in question):
+#Examples (scons <example_name> will build the example in question):
 
-#spiritizExample1
+* spiritizExample1
 
-*Usage:* spiritizExample1 spiritzExample1.input 
+**Usage:** spiritizExample1 spiritzExample1.input 
 
 This example needs a file having lines of this kind:
 
-```12*3-4*1
+```
+12*3-4*1
 2 +3-4*3
-2+3*4*3```
+2+3*4*3
+```
 
 Then it put all computed results in a vector<double>
 
