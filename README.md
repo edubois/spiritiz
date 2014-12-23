@@ -1,4 +1,4 @@
-# INTRODUCTION
+# Spiritiz
 
 * spiritiz is a base of boost::spirit examples
 
@@ -6,7 +6,7 @@
 
 * LICENSE: LGPLv3
 
-# Compilation
+## Compilation
 
 To compile, you will need boost and scons:
 
@@ -45,7 +45,9 @@ scons mode=release
 This will build the default example application.
 
 
-#Examples (scons <example_name> will build the example in question):
+## Examples
+
+Please note that ```scons example_name``` will build the example in question
 
 * spiritizExample1
 
@@ -59,7 +61,7 @@ This example needs a file having lines of this kind:
 2+3*4*3
 ```
 
-Then it put all computed results in a vector<double>
+The parser output all computed results in a vector<double>, the program iterates over the vector and display results.
 
 
 
