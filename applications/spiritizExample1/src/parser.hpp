@@ -12,6 +12,7 @@
 
 #include <vector>
 #include <string>
+#include <cassert>
 
 namespace example1
 {
@@ -20,18 +21,31 @@ namespace details
 {
 namespace unicode = boost::spirit::unicode;
 namespace qi = boost::spirit::qi;
-namespace repo = boost::spirit::repository;
 namespace phx = boost::phoenix;
 
-
-inline void append( std::vector<double> & vec, const std::string & x )
-{ vec.push_back( boost::lexical_cast<double>( x ) ); }
+inline double operation( double & x, const double y, const char op )
+{
+    switch( op )
+    {
+        case '*':
+            return x *= y;
+        case '/':
+            return x /= y;
+        case '+':
+            return x += y;
+        case '-':
+            return x -= y;
+        default:
+            assert( 0 && "Invalid operation!" );
+            return 0.0;
+    }
+}
 
 /**
  *@brief construct a grammar for parsing expressions
  */
 template <typename Iterator>
-struct Grammar : qi::grammar<Iterator, std::string()>
+struct Grammar : qi::grammar<Iterator, std::vector<double>()>
 {
     Grammar()
     : Grammar::base_type(entry)
@@ -39,35 +53,25 @@ struct Grammar : qi::grammar<Iterator, std::string()>
         using qi::lit;
         using qi::_val;
         using qi::_1;
-        using qi::_2;
         using qi::_a;
         using qi::_b;
-        using qi::lexeme;
-        using qi::no_skip;
-        using qi::space;
-        using qi::omit;
-        using qi::int_;
         using unicode::char_;
         using qi::double_;
         using phx::bind;
+        using phx::push_back;
 
-        // An unquoted string 
-        num = (+char_);
-        // a product is something of this kind: a * b
-        product = ( num[_a = _1] >> lit('*') >> num[_b = _1] )/*[_val = _a * _b]*/;
-        // a division is something of this kind: a / b
-        division = ( num[_a = _1] >> lit('/') >> num[_b = _1] )/*[_val = _a / _b]*/;
-        // an expression is something of this kind: a + b * b - c
-        expression = ( product | division );
-
-        entry = *( expression/*[ phx::bind( &append, _val, _1 ) ]*/ );
+        // An double value
+        num = double_;
+        factor = qi::skip(qi::blank)[ ( num[_val = _1] >> +( ( char_('*') | char_('/') )[_a = _1] >> num[_b = _1] )[phx::bind( &operation, _val, _b, _a )] ) ];
+        expression = qi::skip(qi::blank)[ ( (factor|num)[_val = _1] >> *( ( char_('+') | char_('-') )[_a = _1] >> (factor|num)[_b = _1] )[phx::bind(&operation, _val, _b, _a )] ) ];
+        entry = +( expression[ phx::push_back( _val, _1 ) ] >> *qi::eol );
     }
 
-    qi::rule<Iterator, std::string()> entry;
-    qi::rule<Iterator, std::string()> expression;
-    qi::rule<Iterator, std::string(), qi::locals<std::string, std::string> > division;
-    qi::rule<Iterator, std::string(), qi::locals<std::string, std::string> > product;
-    qi::rule<Iterator, std::string()> num;
+    // Create a starting rule with _val as a vector<double>
+    qi::rule<Iterator, std::vector<double>()> entry;
+    qi::rule<Iterator, double(), qi::locals<char, double> > expression;
+    qi::rule<Iterator, double(), qi::locals<char, double> > factor;
+    qi::rule<Iterator, double()> num;
 };
 }
 
