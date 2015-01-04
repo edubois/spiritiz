@@ -14,8 +14,8 @@ jobs=8
 
 extern = '#../3rdParties'
 
-aliases = [('spiritizExample1')]
-default = 'spiritizExample1'
+aliases = [('m3uParser')]
+default = 'm3uParser'
 
 ccache = False
 ccachedir = join(extern,'spiritizCache')
