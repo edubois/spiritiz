@@ -68,7 +68,7 @@ The parser output all computed results in a vector<double>, the program iterates
 
 **Usage:** m3uParser absolute-paths.m3u
 
-Should output the result of the m3u parsing (a vector<m3uParser::PlaylistItem>):
+Should output the result of the m3u parsing (a ```vector<m3uParser::PlaylistItem>``` ):
 
 ```
 Playlist items: 
