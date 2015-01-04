@@ -22,7 +22,7 @@ int main(int argc, char** argv)
         // 2+3*4*3
         // Then it put all computed results in a vector<double>
         std::cerr << "Usage: " << argv[0] << " <filename>" << std::endl;
-        std::cerr << "Exemple: " << argv[0] << " spiritzExample1.input" << std::endl;
+        std::cerr << "Example: " << argv[0] << " spiritzExample1.input" << std::endl;
         return -1;
     }
 
