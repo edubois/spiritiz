@@ -73,17 +73,17 @@ Should output the result of the m3u parsing (a ```vector<m3uParser::PlaylistItem
 ```
 Playlist items: 
 ---
-Filename: "file:///Users/admin/Music/_Playlist mariage/musique mariage/cajun/01. Offshore Blues.mp3"
+Filename: "file:///Users/admin/Creations/Boheme-intro.ogg"
 Duration: 166
-Infos: Offshore Blues
+Infos: Djarwood - Boheme introduction - Other infos
 ---
-Filename: "file:///Users/admin/Music/_Playlist mariage/musique mariage/cajun/09. Mardi-Gras Song.mp3"
+Filename: "file:///Users/admin/Creations/Boheme-intermede.ogg"
 Duration: 134
-Infos: Mardi-Gras Song
+Infos: Boheme intermede
 ---
-Filename: "file:///Users/admin/Music/_Playlist mariage/musique mariage/cajun/08. Valse de Bayou Teche.mp3"
+Filename: "file:///Users/admin/Creations/Boheme-end.ogg"
 Duration: 126
-Infos: Valse de Bayou Teche
+Infos: Djarwood - Boheme ending
 ```
 
  
