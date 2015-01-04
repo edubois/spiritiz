@@ -64,4 +64,26 @@ This example needs a file having lines of this kind:
 The parser output all computed results in a vector<double>, the program iterates over the vector and display results.
 
 
+* m3uParser
 
+**Usage: ** m3uParser absolute-paths.m3u
+
+Should output the result of the m3u parsing (a vector<m3uParser::PlaylistItem>):
+
+```
+Playlist items: 
+---
+Filename: "file:///Users/admin/Music/_Playlist mariage/musique mariage/cajun/01. Offshore Blues.mp3"
+Duration: 166
+Infos: Offshore Blues
+---
+Filename: "file:///Users/admin/Music/_Playlist mariage/musique mariage/cajun/09. Mardi-Gras Song.mp3"
+Duration: 134
+Infos: Mardi-Gras Song
+---
+Filename: "file:///Users/admin/Music/_Playlist mariage/musique mariage/cajun/08. Valse de Bayou Teche.mp3"
+Duration: 126
+Infos: Valse de Bayou Teche
+```
+
+ 
