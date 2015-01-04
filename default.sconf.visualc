@@ -1,0 +1,38 @@
+import os
+import sys
+
+windows = os.name.lower() == "nt" and sys.platform.lower().startswith("win")
+macos = sys.platform.lower().startswith("darwin")
+linux = not windows and not macos
+unix = not windows
+
+mode='release'
+check_libs=0
+
+jobs=7
+
+extern = '#../3rdParties'
+
+CPPDEFINES.extend(['BOOST_SIGNALS_NO_DEPRECATION_WARNING', 'BOOST_ALL_DYN_LINK'])
+
+LIBPATH.extend( ['C:/Program Files (x86)/Microsoft Visual Studio 11.0/VC/lib/amd64', 'C:/Program Files (x86)/Windows Kits/8.0/Lib/win8/um/x64'] )
+
+ENVINC.extend( ['C:/Program Files (x86)/Windows Kits/8.0/Include/um', 'C:/Program Files (x86)/Windows Kits/8.0/Include/shared', 'C:/Program Files (x86)/Microsoft Visual Studio 11.0/VC/include'] )
+
+aliases = [('m3uParser')]
+default = 'm3uParser'
+
+ccache = False
+ccachedir = join(extern,'spiritizCache')
+
+incdir_boost = join(extern,'boost')
+libdir_boost = join(extern,'boost/stage/lib')
+
+lib_boost_thread = 'boost_thread-vc110-mt-1_55'
+lib_boost_signals = 'boost_signals-vc110-mt-1_55'
+lib_boost_system = 'boost_system-vc110-mt-1_55'
+lib_boost_filesystem = 'boost_filesystem-vc110-mt-1_55'
+lib_boost_serialization = 'boost_serialization-vc110-mt-1_55'
+lib_boost_regex = 'boost_regex-vc110-mt-1_55'
+lib_boost_date_time = 'boost_date_time-vc110-mt-1_55'
+lib_boost_program_options = 'boost_program_options-vc110-mt-1_55'
