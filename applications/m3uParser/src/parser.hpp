@@ -27,7 +27,7 @@ struct PlaylistItem
     : duration( -1 ) {}
 
     PlaylistItem( const std::string & filename )
-    : filename( filename ) {}
+    : filename( filename ), duration( -1 ) {}
     
     PlaylistItem( const std::string & filename, const long duration, const std::string & infos )
     : filename( filename ), duration( duration ), infos( infos ) {}
